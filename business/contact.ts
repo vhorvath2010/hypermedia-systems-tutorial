@@ -20,14 +20,11 @@ export class Contact {
     this.email = email;
   }
 
-  private static all(): Contact[] {
+  static all(): Contact[] {
     return Contact.contacts;
   }
 
-  static search(query?: string): Contact[] {
-    if (!query) {
-      return Contact.all();
-    }
+  static search(query: string): Contact[] {
     return Contact.contacts.filter(
       (contact) =>
         contact.first.includes(query) ||

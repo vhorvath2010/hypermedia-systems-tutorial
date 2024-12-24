@@ -2,12 +2,11 @@ import { html } from "@hono/hono/html";
 import { Contact } from "../business/contact.ts";
 
 interface IndexParams {
+  readonly contacts: Contact[];
   readonly query?: string;
 }
 
-export function Index({ query = "" }: IndexParams) {
-  const contacts = Contact.search(query);
-
+export function Index({ contacts, query = "" }: IndexParams) {
   return html`<form action="/contacts" method="get" class="tool-bar">
       <label for="search">Search Term</label>
       <input id="search" type="search" name="q" value="${query}" />
