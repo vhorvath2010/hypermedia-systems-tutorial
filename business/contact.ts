@@ -1,4 +1,7 @@
+import { v1 } from "@std/uuid";
+
 interface ContactFields {
+  readonly id: string;
   readonly first: string;
   readonly last: string;
   readonly phone: string;
@@ -8,12 +11,14 @@ interface ContactFields {
 export class Contact {
   static contacts: Contact[] = [];
 
+  id: string;
   first: string;
   last: string;
   phone: string;
   email: string;
 
   constructor({ first, last, phone, email }: ContactFields) {
+    this.id = v1.generate();
     this.first = first;
     this.last = last;
     this.phone = phone;

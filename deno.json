@@ -3,6 +3,7 @@
     "dev": "deno run --watch --allow-net app.ts"
   },
   "imports": {
-    "@hono/hono": "jsr:@hono/hono@^4.6.14"
+    "@hono/hono": "jsr:@hono/hono@^4.6.14",
+    "@std/uuid": "jsr:@std/uuid@^1.0.4"
   }
 }

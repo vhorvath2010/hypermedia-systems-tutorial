@@ -30,8 +30,8 @@ export function Index({ contacts, query = "" }: IndexParams) {
             <td>${contact.phone}</td>
             <td>${contact.email}</td>
             <td>
-              <a href="/contacts/{{ contact.id }}/edit">Edit</a>
-              <a href="/contacts/{{ contact.id }}">View</a>
+              <a href="/contacts/${contact.id}/edit">Edit</a>
+              <a href="/contacts/${contact.id}">View</a>
             </td>
           </tr>`;
         })}
