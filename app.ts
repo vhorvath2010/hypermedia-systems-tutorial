@@ -6,7 +6,8 @@ app.get("/", (c) => c.redirect("/contacts"));
 
 app.get("/contacts", (c) => {
   const query = c.req.query("q");
-  return c.html(Index({ contacts: [], query }));
+
+  return c.html(Index({ query }));
 });
 
 Deno.serve(app.fetch);
