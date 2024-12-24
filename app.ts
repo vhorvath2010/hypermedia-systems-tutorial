@@ -6,7 +6,6 @@ app.get("/", (c) => c.redirect("/contacts"));
 
 app.get("/contacts", (c) => {
   const query = c.req.query("q");
-
   return c.html(Index({ query }));
 });
 
