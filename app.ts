@@ -64,4 +64,14 @@ app.post("contacts/:id/edit", async (c) => {
   return c.text("Not found!");
 });
 
+app.post("contacts/:id/delete", (c) => {
+  const id = c.req.param("id");
+  const contact = Contact.find(id);
+  if (contact) {
+    Contact.remove(contact);
+    return c.redirect("/contacts");
+  }
+  return c.text("Not found!");
+});
+
 Deno.serve(app.fetch);

@@ -49,6 +49,12 @@ export class Contact {
     Contact.contacts.push(contact);
   }
 
+  static remove(contact: Contact) {
+    Contact.contacts = Contact.contacts.filter(
+      (searchContact) => searchContact !== contact
+    );
+  }
+
   static find(id: string) {
     return Contact.contacts.find((contact) => contact.id === id);
   }
