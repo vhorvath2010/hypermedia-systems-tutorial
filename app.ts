@@ -48,5 +48,20 @@ app.get("contacts/:id/edit", (c) => {
   }
   return c.text("Not found!");
 });
+app.post("contacts/:id/edit", async (c) => {
+  const id = c.req.param("id");
+  const contact = Contact.find(id);
+  const formData = await c.req.formData();
+  if (contact) {
+    contact.update({
+      first: formData.get("first_name")?.toString(),
+      last: formData.get("last_name")?.toString(),
+      email: formData.get("email")?.toString(),
+      phone: formData.get("phone")?.toString(),
+    });
+    return c.redirect("/contacts/" + id);
+  }
+  return c.text("Not found!");
+});
 
 Deno.serve(app.fetch);

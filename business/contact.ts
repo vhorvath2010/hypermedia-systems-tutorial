@@ -24,6 +24,13 @@ export class Contact {
     this.email = email;
   }
 
+  update({ first, last, phone, email }: ContactFields) {
+    this.first = first;
+    this.last = last;
+    this.phone = phone;
+    this.email = email;
+  }
+
   static all(): Contact[] {
     return Contact.contacts;
   }
