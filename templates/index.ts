@@ -7,7 +7,7 @@ interface IndexParams {
 }
 
 export function Index({ contacts, query = "" }: IndexParams) {
-  return html`<form action="/contacts" method="get" class="tool-bar">
+  return html`<form action="/contacts" method="GET" class="tool-bar">
       <label for="search">Search Term</label>
       <input id="search" type="search" name="q" value="${query}" />
       <input type="submit" value="Search" />
@@ -19,7 +19,7 @@ export function Index({ contacts, query = "" }: IndexParams) {
           <th>Last</th>
           <th>Phone</th>
           <th>Email</th>
-          <th />
+          <th></th>
         </tr>
       </thead>
       <tbody>
