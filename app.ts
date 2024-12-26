@@ -26,7 +26,7 @@ app.post("/contacts/new", async (c) => {
       phone: formData.get("phone")?.toString(),
     })
   );
-  c.redirect("/contacts");
+  return c.redirect("/contacts");
 });
 
 Deno.serve(app.fetch);
