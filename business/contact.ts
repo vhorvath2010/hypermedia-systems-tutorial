@@ -41,4 +41,8 @@ export class Contact {
   static register(contact: Contact) {
     Contact.contacts.push(contact);
   }
+
+  static find(id: string) {
+    return Contact.contacts.find((contact) => contact.id === id);
+  }
 }
