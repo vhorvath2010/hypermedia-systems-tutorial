@@ -5,6 +5,7 @@ import { NewContact } from "./templates/newContact.ts";
 import { serveStatic } from "@hono/hono/deno";
 import { ShowContact } from "./templates/showContact.ts";
 import { EditContact } from "./templates/editContact.ts";
+import { Layout } from "./templates/layout.ts";
 
 const app = new Hono();
 app.get("/", (c) => c.redirect("/contacts"));
@@ -14,10 +15,10 @@ app.get("/favicon.ico", serveStatic({ path: "./static/favicon.ico" }));
 app.get("/contacts", (c) => {
   const query = c.req.query("q");
   const contacts = query ? Contact.search(query) : Contact.all();
-  return c.html(Index({ contacts, query }));
+  return c.html(Layout(Index({ contacts, query })));
 });
 
-app.get("/contacts/new", (c) => c.html(NewContact({})));
+app.get("/contacts/new", (c) => c.html(Layout(NewContact({}))));
 app.post("/contacts/new", async (c) => {
   const formData = await c.req.formData();
   Contact.register(
@@ -35,7 +36,7 @@ app.get("contacts/:id", (c) => {
   const id = c.req.param("id");
   const contact = Contact.find(id);
   if (contact) {
-    return c.html(ShowContact(contact));
+    return c.html(Layout(ShowContact(contact)));
   }
   return c.text("Not found!");
 });
@@ -44,7 +45,7 @@ app.get("contacts/:id/edit", (c) => {
   const id = c.req.param("id");
   const contact = Contact.find(id);
   if (contact) {
-    return c.html(EditContact(contact));
+    return c.html(Layout(EditContact(contact)));
   }
   return c.text("Not found!");
 });
