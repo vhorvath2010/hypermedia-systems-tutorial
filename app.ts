@@ -3,7 +3,8 @@ import { Index } from "./templates/index.ts";
 import { Contact } from "./business/contact.ts";
 import { NewContact } from "./templates/newContact.ts";
 import { serveStatic } from "@hono/hono/deno";
-import { showContact } from "./templates/showContact.ts";
+import { ShowContact } from "./templates/showContact.ts";
+import { EditContact } from "./templates/editContact.ts";
 
 const app = new Hono();
 app.get("/", (c) => c.redirect("/contacts"));
@@ -34,7 +35,16 @@ app.get("contacts/:id", (c) => {
   const id = c.req.param("id");
   const contact = Contact.find(id);
   if (contact) {
-    return c.html(showContact(contact));
+    return c.html(ShowContact(contact));
+  }
+  return c.text("Not found!");
+});
+
+app.get("contacts/:id/edit", (c) => {
+  const id = c.req.param("id");
+  const contact = Contact.find(id);
+  if (contact) {
+    return c.html(EditContact(contact));
   }
   return c.text("Not found!");
 });
