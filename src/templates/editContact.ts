@@ -49,9 +49,15 @@ export function EditContact(contact: Contact) {
       </fieldset>
       <button>Save</button>
     </form>
-    <form action="/contacts/${contact.id}/delete" method="POST">
-      <button>Delete Contact</button>
-    </form>
+    <button
+      hx-delete="/contacts/${contact.id}"
+      hx-target="body"
+      hx-push-url="true"
+      hx-confirm="Are you sure you want to delete ${contact.first ||
+      "the contact"}?"
+    >
+      Delete Contact
+    </button>
     <p>
       <a href="/contacts">Back</a>
     </p>
