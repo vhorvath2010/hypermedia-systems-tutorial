@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --watch --allow-net --allow-read app.ts"
+    "dev": "deno run --watch --allow-net --allow-read src/app.ts"
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.6.14",

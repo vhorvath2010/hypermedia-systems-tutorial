@@ -1,11 +1,11 @@
 import { Hono } from "@hono/hono";
-import { Index } from "./templates/index.ts";
+import { Index } from "../src/templates/index.ts";
 import { Contact } from "./business/contact.ts";
-import { NewContact } from "./templates/newContact.ts";
+import { NewContact } from "../src/templates/newContact.ts";
 import { serveStatic } from "@hono/hono/deno";
-import { ShowContact } from "./templates/showContact.ts";
-import { EditContact } from "./templates/editContact.ts";
-import { Layout } from "./templates/layout.ts";
+import { ShowContact } from "../src/templates/showContact.ts";
+import { EditContact } from "../src/templates/editContact.ts";
+import { Layout } from "../src/templates/layout.ts";
 
 const app = new Hono();
 app.get("/", (c) => c.redirect("/contacts"));
