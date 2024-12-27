@@ -9,7 +9,7 @@ export function Layout(body: HtmlEscapedString | Promise<HtmlEscapedString>) {
       <title>Contact App</title>
       <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     </head>
-    <body>
+    <body hx-boost="true">
       ${{ $$child: body }}
     </body>
   </html>`;
