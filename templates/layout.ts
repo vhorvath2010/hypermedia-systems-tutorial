@@ -1,5 +1,5 @@
 import { HtmlEscapedString } from "@hono/hono/utils/html";
-import { html } from "@hono/hono/html";
+import { html } from "typed-htmx";
 
 export function Layout(body: HtmlEscapedString | Promise<HtmlEscapedString>) {
   return html`<html>
@@ -10,7 +10,7 @@ export function Layout(body: HtmlEscapedString | Promise<HtmlEscapedString>) {
       <script src="https://unpkg.com/htmx.org@2.0.4"></script>
     </head>
     <body>
-      ${body}
+      ${{ $$child: body }}
     </body>
   </html>`;
 }

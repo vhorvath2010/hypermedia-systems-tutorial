@@ -4,6 +4,7 @@
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.6.14",
-    "@std/uuid": "jsr:@std/uuid@^1.0.4"
+    "@std/uuid": "jsr:@std/uuid@^1.0.4",
+    "typed-htmx": "npm:typed-htmx@^0.3.1"
   }
 }
